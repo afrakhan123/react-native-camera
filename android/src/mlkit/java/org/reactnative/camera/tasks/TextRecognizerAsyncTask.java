@@ -74,24 +74,24 @@ public class TextRecognizerAsyncTask extends android.os.AsyncTask<Void, Void, Vo
     TextRecognizer detector = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS);
 
     InputImage image = InputImage.fromByteArray(mImageData, mWidth, mHeight, getFirebaseRotation(), InputImage.IMAGE_FORMAT_YV12);
-    detector.process(image)
-            .addOnSuccessListener(new OnSuccessListener<Text>() {
-              @Override
-              public void onSuccess(Text firebaseVisionText) {
-                List<Text.TextBlock> textBlocks = firebaseVisionText.getTextBlocks();
-                WritableArray serializedData = serializeEventData(textBlocks);
-                mDelegate.onTextRecognized(serializedData);
-                mDelegate.onTextRecognizerTaskCompleted();
-                }
-            })
-            .addOnFailureListener(
-                    new OnFailureListener() {
-                      @Override
-                      public void onFailure(Exception e) {
-                        Log.e(TAG, "Text recognition task failed" + e);
-                        mDelegate.onTextRecognizerTaskCompleted();
-                        }
-                    });
+    // detector.process(image)
+    //         .addOnSuccessListener(new OnSuccessListener<Text>() {
+    //           @Override
+    //           public void onSuccess(Text firebaseVisionText) {
+    //             List<Text.TextBlock> textBlocks = firebaseVisionText.getTextBlocks();
+    //             WritableArray serializedData = serializeEventData(textBlocks);
+    //             mDelegate.onTextRecognized(serializedData);
+    //             mDelegate.onTextRecognizerTaskCompleted();
+    //             }
+    //         })
+    //         .addOnFailureListener(
+    //                 new OnFailureListener() {
+    //                   @Override
+    //                   public void onFailure(Exception e) {
+    //                     Log.e(TAG, "Text recognition task failed" + e);
+    //                     mDelegate.onTextRecognizerTaskCompleted();
+    //                     }
+    //                 });
 
     return null;
   }
