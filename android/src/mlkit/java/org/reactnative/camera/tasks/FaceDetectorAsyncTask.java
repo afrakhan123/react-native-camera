@@ -67,24 +67,24 @@ public class FaceDetectorAsyncTask extends android.os.AsyncTask<Void, Void, Void
     InputImage image = InputImage.fromByteArray(mImageData, mWidth, mHeight, getFirebaseRotation(), InputImage.IMAGE_FORMAT_YV12);
 
     FaceDetector detector = mFaceDetector.getDetector();
-    detector.process(image)
-            .addOnSuccessListener(
-                    new OnSuccessListener<List<Face>>() {
-                      @Override
-                      public void onSuccess(List<Face> faces) {
-                        WritableArray facesList = serializeEventData(faces);
-                        mDelegate.onFacesDetected(facesList);
-                        mDelegate.onFaceDetectingTaskCompleted();
-                      }
-                    })
-            .addOnFailureListener(
-                    new OnFailureListener() {
-                      @Override
-                      public void onFailure(Exception e) {
-                        Log.e(TAG, "Text recognition task failed" + e);
-                        mDelegate.onFaceDetectingTaskCompleted();
-                      }
-                    });
+    // detector.process(image)
+    //         .addOnSuccessListener(
+    //                 new OnSuccessListener<List<Face>>() {
+    //                   @Override
+    //                   public void onSuccess(List<Face> faces) {
+    //                     WritableArray facesList = serializeEventData(faces);
+    //                     mDelegate.onFacesDetected(facesList);
+    //                     mDelegate.onFaceDetectingTaskCompleted();
+    //                   }
+    //                 })
+    //         .addOnFailureListener(
+    //                 new OnFailureListener() {
+    //                   @Override
+    //                   public void onFailure(Exception e) {
+    //                     Log.e(TAG, "Text recognition task failed" + e);
+    //                     mDelegate.onFaceDetectingTaskCompleted();
+    //                   }
+    //                 });
     return null;
   }
 

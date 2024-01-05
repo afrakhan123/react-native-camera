@@ -98,22 +98,22 @@ public class FileFaceDetectionAsyncTask extends AsyncTask<Void, Void, Void> {
     try {
       InputImage image = InputImage.fromFilePath(mContext, Uri.parse(mUri));
       FaceDetector detector = mRNFaceDetector.getDetector();
-      detector.process(image)
-              .addOnSuccessListener(
-                      new OnSuccessListener<List<Face>>() {
-                        @Override
-                        public void onSuccess(List<Face> faces) {
-                          serializeEventData(faces);
-                        }
-                      })
-              .addOnFailureListener(
-                      new OnFailureListener() {
-                        @Override
-                        public void onFailure(Exception e) {
-                          Log.e(ERROR_TAG, "Text recognition task failed", e);
-                          mPromise.reject(ERROR_TAG, "Text recognition task failed", e);
-                        }
-                      });
+      // detector.process(image)
+      //         .addOnSuccessListener(
+      //                 new OnSuccessListener<List<Face>>() {
+      //                   @Override
+      //                   public void onSuccess(List<Face> faces) {
+      //                     serializeEventData(faces);
+      //                   }
+      //                 })
+      //         .addOnFailureListener(
+      //                 new OnFailureListener() {
+      //                   @Override
+      //                   public void onFailure(Exception e) {
+      //                     Log.e(ERROR_TAG, "Text recognition task failed", e);
+      //                     mPromise.reject(ERROR_TAG, "Text recognition task failed", e);
+      //                   }
+      //                 });
     } catch (IOException e) {
       e.printStackTrace();
       Log.e(ERROR_TAG, "Creating Firebase Image from uri" + mUri + "failed", e);
